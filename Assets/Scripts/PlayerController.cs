@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Character character;
+    [SerializeField] private Player player;
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference shootAction;
@@ -38,25 +38,25 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void GetOnMove(InputAction.CallbackContext obj)
+    private void GetOnMove(InputAction.CallbackContext ctx)
     {
         var request = new ForceRequest();
-        var horizontalInput = obj.ReadValue<Vector2>();
+        var horizontalInput = ctx.ReadValue<Vector2>();
         request.direction = new Vector3(horizontalInput.x, 0, horizontalInput.y);
         request.speed = speed;
         request.acceleration = acceleration;
-        character.RequestForce(request);
+        player.RequestForce(request);
     }
-    private void Jump(InputAction.CallbackContext obj)
+    private void Jump(InputAction.CallbackContext ctx)
     {
         var request = new ForceRequest();
-        var verticalInput = obj.ReadValue<Vector2>();
-        request.direction = new Vector3(0, verticalInput.y, 0);
+        request.direction = Vector3.up;
+        request.speed = speed;
         request.acceleration = acceleration;
-        character.RequestForce(request);
+        player.RequestForce(request);
     }
 
-    private void Shoot(InputAction.CallbackContext obj)
+    private void Shoot(InputAction.CallbackContext ctx)
     {
         weapon.GetComponent<Weapon>().FireInstance();
     }

@@ -1,16 +1,18 @@
 using UnityEngine;
 
 /// <summary>
-/// Moves the character, controls everything related to the world and position
+/// Moves the player, controls everything related to the world and position
 /// </summary> 
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class Character : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private ForceRequest _instantForceRequest;
     private ForceRequest _continousForceRequest;
     private Rigidbody _rigidbody;
+
+    public static Transform instance;
 
     public void RequestForce(ForceRequest forceRequest)
     {
@@ -20,6 +22,12 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        if (instance != null && instance != transform)
+        {
+            Debug.LogWarning($"{name}: <color=red>An instance was already created!<color=red>");
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()
