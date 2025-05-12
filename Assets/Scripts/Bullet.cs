@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,5 +16,13 @@ public class Bullet : MonoBehaviour
     public void Fire()
     {
         rigidbody.AddForce(transform.forward * force, ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!gameObject.IsDestroyed())
+        {
+            Destroy(gameObject);
+        }
     }
 }
