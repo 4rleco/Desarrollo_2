@@ -19,10 +19,7 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if (!gameObject.IsDestroyed())
-        {
-            Destroy(gameObject);
-        }
+    { 
+        Destroy(gameObject);
     }
 }
