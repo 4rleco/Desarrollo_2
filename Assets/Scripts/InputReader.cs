@@ -21,9 +21,6 @@ public class InputReader : MonoBehaviour
 
     public static event Action fire;
 
-    int amountOfJumps = 1;
-    bool grounded = true;
-
     private void OnEnable()
     {
         moveAction.action.started += HandleMoveInput;

@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float force = 100;
     private new Rigidbody rigidbody;
+    private Enemy enemy;
 
     private void Awake()
     {

@@ -104,7 +104,6 @@ public class PlayerController : MonoBehaviour
             grounded = false;
             amountOfJumps = 0;
         }
-        Debug.Log(amountOfJumps);
     }
 
     private void Shoot(InputAction.CallbackContext ctx)
