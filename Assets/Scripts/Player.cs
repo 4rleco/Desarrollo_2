@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        //loscks the cursor to teh middle of teh screen and makes it invisible
+        Cursor.lockState = CursorLockMode.Locked;
+
         _rigidbody = GetComponent<Rigidbody>();
 
         if (instance != null && instance != transform)
