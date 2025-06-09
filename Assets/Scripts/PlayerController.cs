@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
         jumpAction.action.performed += Jump;
         shootAction.action.performed += Shoot;
         lookAction.action.performed += Look;
+
+        weapon.transform.SetParent(cameraTransform);
     }
 
     private void Look(InputAction.CallbackContext ctx)
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
         right.y = 0.0f;
 
         forward.Normalize();
-        right.Normalize();
+        right.Normalize();        
 
         var request = new ForceRequest();
         var horizontalInput = ctx.ReadValue<Vector2>();
