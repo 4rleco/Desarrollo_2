@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         moveAction.action.performed += GetOnMove;
         jumpAction.action.performed += Jump;
-        shootAction.action.performed += Shoot;
+        shootAction.action.started += Shoot;
         lookAction.action.performed += Look;
 
         weapon.transform.SetParent(cameraTransform);
@@ -111,11 +112,5 @@ public class PlayerController : MonoBehaviour
     private void Shoot(InputAction.CallbackContext ctx)
     {
         weapon.GetComponent<Weapon>().FireInstance();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        grounded = true;
-        amountOfJumps += 1;
     }
 }

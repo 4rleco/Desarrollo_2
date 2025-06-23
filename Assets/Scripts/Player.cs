@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
 
     public static Transform instance;
 
+    private bool grounded;
+    private int amountOfJumps;
+
     public void RequestForce(ForceRequest forceRequest)
     {
         _instantForceRequest = forceRequest;
@@ -21,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        //loscks the cursor to teh middle of teh screen and makes it invisible
+        //locks the cursor to teh middle of teh screen and makes it invisible
         Cursor.lockState = CursorLockMode.Locked;
 
         _rigidbody = GetComponent<Rigidbody>();
@@ -49,5 +52,10 @@ public class Player : MonoBehaviour
 
         _rigidbody.AddForce(_instantForceRequest.direction * _instantForceRequest.acceleration, ForceMode.Impulse);
         _instantForceRequest = null;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        grounded = true;
+        amountOfJumps += 1;
     }
 }
