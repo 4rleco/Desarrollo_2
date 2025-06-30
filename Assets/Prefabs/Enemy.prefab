@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3272553821954945960}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.13097, y: 15.944952, z: -21.933044}
+  m_LocalPosition: {x: -0.03, y: 0.03, z: 0.024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -119,6 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8038454916774087674}
+  - component: {fileID: 3360397510750609092}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -142,3 +143,47 @@ Transform:
   - {fileID: 6686315664722198739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3360397510750609092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488470861181461219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe687b78fdec8ad4b92abb8a332ca30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: 0
+  morePositions: 0
+  travelCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  cooldown: 1
+  capsule: {fileID: 6686315664722198739}
+  right: {fileID: 0}
+  left: {fileID: 0}
+  front: {fileID: 0}
+  back: {fileID: 0}
