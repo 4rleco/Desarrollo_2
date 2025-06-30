@@ -14,11 +14,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform front;
     [SerializeField] private Transform back;
 
+    public float health;
+
     private void OnEnable()
     {
         if (move)
         {
             StartCoroutine(Animate());
+        }
+    }
+
+    private void Update()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

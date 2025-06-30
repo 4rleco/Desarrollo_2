@@ -6,16 +6,19 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float force = 100;
-    [SerializeField]private float lifetime = 2.0f;
+    public float lifetime;
     private new Rigidbody rigidbody;
+    public Vector3 target { get; set; }
+    public bool hit {  get; set; }
     private Enemy enemy;
     private float creationTime;
+    public float damage;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
 
-        creationTime = Time.time; 
+        creationTime = Time.time;
     }
 
     private void Update()
@@ -33,6 +36,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.TryGetComponent<Enemy>(out enemy))
+        {
+            enemy.health -= damage;
+            Debug.Log("Enemy hitted");
+        }
+
         Destroy(gameObject);
     }
 }

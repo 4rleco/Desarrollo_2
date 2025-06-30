@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
         weapon.transform.SetParent(cameraTransform);
     }
 
+    private void OnDisable()
+    {
+        shootAction.action.canceled -= Shoot;
+    }
+
     private void Look(InputAction.CallbackContext ctx)
     {
         lookInput = lookAction.action.ReadValue<Vector2>() * sensitivity;
@@ -84,15 +89,15 @@ public class PlayerController : MonoBehaviour
         right.y = 0.0f;
 
         forward.Normalize();
-        right.Normalize();        
+        right.Normalize();
 
         var request = new ForceRequest();
         var horizontalInput = ctx.ReadValue<Vector2>();
         request.direction = right * horizontalInput.x + forward * horizontalInput.y;
         request.speed = speed;
         request.acceleration = acceleration;
-        player.RequestForce(request);            
-    }   
+        player.RequestForce(request);
+    }
 
     private void Jump(InputAction.CallbackContext ctx)
     {
@@ -111,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext ctx)
     {
+        weapon.GetComponent<Weapon>().cameraTransform = cameraTransform;
         weapon.GetComponent<Weapon>().FireInstance();
     }
 }
